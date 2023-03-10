@@ -1,6 +1,6 @@
 import './App.css';
-import LoginButton from './LoginButton';
-import LogoutButton from './LogoutButton';
+import LoginButton from './components/LoginButton';
+import LogoutButton from './components/LogoutButton';
 import 'bootstrap/dist/css/bootstrap.min.css';
   
 function App() {
