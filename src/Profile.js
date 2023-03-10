@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-
+import Dialoguefrom from './Dialogueform'
 const Profile = () => {
 	const { user } = useAuth0();
 
@@ -18,7 +18,9 @@ const Profile = () => {
 				<p className="userInfo" id="userInfo5">
 					Sub: {user.sub}</p>
 			</div>
+			<Dialoguefrom />
 		</>
+		
 	)
 }
 
