@@ -9,6 +9,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import "./profile.css";
 import data from "../data";
+import Axios from"axios"
 import Dialogueform from "../Dialogueform/Dialogueform";
 import { margin } from "@mui/system";
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -40,6 +41,8 @@ const Profile = () => {
   const [success, setSucess] = useState(false);
   const [fail, setFail] = useState(false);
   const reviewsHandler = () => {
+    Axios.get('http://localhost:3001/api/v1/health').then(res=>{console.log(res.data)})
+    
     setDescription(false);
     setReviews(false);
     setSucess(true);
