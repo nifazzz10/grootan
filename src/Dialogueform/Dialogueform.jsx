@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-// import "./styles.css";
+import "./Dialogueform.css";
 
 function Dialogueform() {
   // React States
