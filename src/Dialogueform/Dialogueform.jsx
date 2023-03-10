@@ -1,28 +1,30 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-
+import { useAuth0 } from "@auth0/auth0-react";
 import "./Dialogueform.css";
 
 function Dialogueform() {
   // React States
+  const { user } = useAuth0();
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const [description, setDescription] = useState(false);
+  const [reviews, setReviews] = useState(true);
   // User Login info
   const database = [
     {
       username: "user1",
-      password: "pass1"
+      password: "pass1",
     },
     {
       username: "user2",
-      password: "pass2"
-    }
+      password: "pass2",
+    },
   ];
 
   const errors = {
     uname: "invalid username",
-    pass: "invalid password"
+    pass: "invalid password",
   };
 
   const handleSubmit = (event) => {
@@ -69,7 +71,14 @@ function Dialogueform() {
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
-          <input type="submit" />
+          <button
+            className="btn btn-primary
+			mx-5 my-5 px-4"
+            type="submit"
+          >
+            Log In
+          </button>
+          ;{/* <input type="submit" /> */}
         </div>
       </form>
     </div>
@@ -78,8 +87,41 @@ function Dialogueform() {
   return (
     <div className="app">
       <div className="login-form">
-        <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        {isSubmitted ? (
+          <div>
+            <div className="container">
+              <p className="userInfo" id="userInfo1">
+                Name: {user.name}
+              </p>
+              <p className="userInfo" id="userInfo2">
+                Given Name: {user.given_name}
+              </p>
+              <p className="userInfo" id="userInfo3">
+                Family Name: {user.family_name}
+              </p>
+              <p className="userInfo" id="userInfo4">
+                Email: {user.email}
+              </p>
+              <p className="userInfo" id="userInfo5">
+                Sub: {user.sub}
+              </p>
+              <button
+                className="btn btn-primary
+			mx-5 my-3 px-4"
+              >
+                Accept
+              </button>{" "}
+              <button
+                className="btn btn-primary
+			mx-5 my-3 px-4"
+              >
+                Decline
+              </button>
+            </div>
+          </div>
+        ) : (
+          renderForm
+        )}
       </div>
     </div>
   );
